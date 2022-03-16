@@ -1088,6 +1088,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-std",
+ "dotenv",
  "sea-orm",
  "serde",
  "tide",

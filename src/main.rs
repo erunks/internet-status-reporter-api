@@ -1,3 +1,5 @@
+use dotenv;
+
 mod entity;
 use entity::prelude::*;
 
@@ -10,10 +12,9 @@ use anyhow::Result;
 
 #[async_std::main]
 async fn main() -> Result<()>{
-    let env_database_url = include_str!("../.env").trim();
-    let split_url: Vec<&str> = env_database_url.split("=").collect();
-    let database_url = split_url[1];
+    dotenv::dotenv().ok();
 
+    let database_url = dotenv::var("DATABASE_URL").unwrap();
     let db = Database::connect(database_url).await?;
 
     // let outtages = Outtages::find().all(&db).await;
