@@ -8,7 +8,11 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.56"
 async-std = { version = "1.10.0", features = ["attributes"] }
+chrono = "0.4.19"
 dotenv = "0.15.0"
+http-types = "2.12.0"
 sea-orm = { version = "0.6.0", features = ["runtime-async-std-rustls", "sqlx-mysql", "macros"], default-features = false }
 serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.79"
+sqlx = { version = "0.5.11", features = ["runtime-async-std-rustls", "offline", "macros", "chrono", "json", "mysql"] }
 tide = "0.16.0"

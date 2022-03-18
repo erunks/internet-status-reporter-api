@@ -2,6 +2,7 @@
 
 use sea_orm::entity::prelude::*;
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -14,7 +15,7 @@ pub struct Model {
     pub created_at: Option<DateTime>,
     pub maintenance: i8,
     #[sea_orm(column_type = "Text")]
-    pub info: String,
+    pub info: Option<Value>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter)]
