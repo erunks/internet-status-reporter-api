@@ -1,13 +1,9 @@
-use super::*;
-
 use crate::entity::prelude::*;
 use crate::helpers::request::*;
 use crate::helpers::response::*;
 use crate::helpers::server::State;
 
-use sea_orm::{
-    ConnectionTrait, Database, EntityTrait, PaginatorTrait, QueryOrder, SqlxMySqlConnector,
-};
+use sea_orm::{EntityTrait, PaginatorTrait, QueryOrder, SqlxMySqlConnector};
 use tide::{Request, Response, Result, StatusCode};
 
 pub async fn get(req: Request<State>) -> Result<Response> {
@@ -23,8 +19,5 @@ pub async fn get(req: Request<State>) -> Result<Response> {
         .fetch_page(paginated_request.page_offset)
         .await?;
 
-    Ok(json_response::<std::vec::Vec<entity::outtages::Model>>(
-        StatusCode::Ok,
-        &outtages,
-    ))
+    Ok(json_api_response(StatusCode::Ok, &outtages))
 }
