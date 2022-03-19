@@ -19,6 +19,7 @@ pub async fn bind_and_listen(mut server: Server<State>) {
 
     server.at("/").get(|_| async { Ok("Hello, world!") });
     server.at("/outtages").get(outtages::get);
+    server.at("/modem_events").get(modem_events::get);
 
     println!("Starting server on 0.0.0.0:{}...", port);
     server

@@ -13,15 +13,15 @@ pub async fn get(req: Request<State>) -> Result<Response> {
 
     let paginated_request: PaginatedRequest = req.query()?;
 
-    let outtage_pages = Outtages::find()
-        .order_by_desc(OuttagesColumn::CreatedAt)
+    let modem_event_pages = ModemEvents::find()
+        .order_by_desc(ModemEventsColumn::CreatedAt)
         .paginate(&db, paginated_request.per_page);
-    let outtages = outtage_pages
+    let modem_events = modem_event_pages
         .fetch_page(paginated_request.page_offset)
         .await?;
 
     Ok(json_api_response(
         StatusCode::Ok,
-        &vec_to_jsonapi_document(outtages),
+        &vec_to_jsonapi_document(modem_events),
     ))
 }
