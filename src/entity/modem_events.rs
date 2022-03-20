@@ -19,7 +19,7 @@ pub struct Model {
     pub maintenance: bool,
 }
 
-jsonapi_model!(Model; "ModemEvent");
+jsonapi_model!(Model; "modemEvent");
 
 #[derive(Copy, Clone, Debug, EnumIter)]
 pub enum Relation {}

@@ -19,10 +19,10 @@ pub struct Model {
     pub created_at: Option<DateTime>,
     pub maintenance: bool,
     #[sea_orm(column_type = "Text")]
-    pub info: Option<Value>,
+    pub info: Value,
 }
 
-jsonapi_model!(Model; "Outtage");
+jsonapi_model!(Model; "outtage");
 
 #[derive(Copy, Clone, Debug, EnumIter)]
 pub enum Relation {}
