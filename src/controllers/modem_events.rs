@@ -79,7 +79,7 @@ pub async fn get(req: Request<State>) -> Result<Response> {
         Err(err) => {
             let status_code = StatusCode::InternalServerError;
             let document = DocumentError {
-                errors: vec![create_json_api_error(status_code, &err.to_string())],
+                errors: vec![create_json_api_error(status_code, err)],
                 links: None,
                 meta: Some(meta),
                 jsonapi: None,
